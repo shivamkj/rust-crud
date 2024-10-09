@@ -43,6 +43,7 @@ pub async fn delete_task(Path(task_id): Path<i32>) -> Result<(StatusCode, String
 }
 
 #[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
 struct TaskRow {
   task_id: i32,
   name: String,
@@ -58,7 +59,7 @@ pub struct TaskReq {
 }
 
 #[rustfmt::skip]
-  fn default_priority() -> i32 { 1 }
+fn default_priority() -> i32 { 1 }
 
 #[derive(Serialize)]
 struct CreateTaskRow {
